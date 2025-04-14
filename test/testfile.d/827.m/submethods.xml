@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<method>
+    <submethods>
+        <submethod program="HyStar_LC" revision="0">
+            <name>230206_WatersQuad_Pos</name>
+            <files>
+                <file name="hystar.method"/>
+            </files>
+        </submethod>
+        <submethod program="OtofImpacTEMControl" revision="0">
+            <name>240531_IS_TimsOn_VIPHESI_75-1250_POS.m</name>
+            <files>
+                <file name="microTOFQImpacTemAcquisition.method"/>
+                <file name="diaSettings.diasqlite"/>
+                <file name="prmSettings.prmsqlite"/>
+                <file name="Maldi.method"/>
+                <file name="synchroSettings.syncsqlite"/>
+            </files>
+        </submethod>
+        <submethod program="HyStar_Autosampler" revision="0">
+            <name>Standard</name>
+            <files/>
+        </submethod>
+    </submethods>
+    <locked>false</locked>
+    <readonly>true</readonly>
+    <comment/>
+</method>
