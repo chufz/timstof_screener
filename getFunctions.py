@@ -30,8 +30,8 @@ def getEIC(
     )
 
     rt_slice = slice(
-        float((rt - rt_tol) *60),
-        float((rt + rt_tol) *60)
+        float((rt - rt_tol) * 60),
+        float((rt + rt_tol) * 60)
     )
 
     im_slice = slice(
@@ -51,9 +51,9 @@ def getEIC(
             file,
             precursor_indices,
             x_axis_label="rt",
-            # width=900,
+            width=350,
             remove_zeros=True,
-            label=name
+            title=name
         )
     
     return xic
@@ -86,8 +86,8 @@ def getEIM(
     )
 
     rt_slice = slice(
-        float((rt - rt_tol) *60),
-        float((rt + rt_tol) *60)
+        float((rt - rt_tol) * 60),
+        float((rt + rt_tol) * 60)
     )
 
     im_slice = slice(
@@ -107,9 +107,9 @@ def getEIM(
             file,
             precursor_indices,
             x_axis_label="mobility",
-            # width=900,
+            width=350,
             remove_zeros=True,
-            label=name
+            title=name
         )
     
     return xim
@@ -136,15 +136,27 @@ def getMap(
         im_tol (float, optional): inverse ion mobility window, Defaults to 0.7
         name (string, optional): label
     """
-    
-    low_mz = mz / (1 + ppm / 10**6)
-    high_mz = mz * (1 + ppm / 10**6)
+    mz_slice = slice(
+        mz / (1 + ppm / 10**6),
+        mz * (1 + ppm / 10**6)
+    )
+
+    rt_slice = slice(
+        float((rt - rt_tol) * 60),
+        float((rt + rt_tol) * 60)
+    )
+
+    im_slice = slice(
+        im - im_tol,
+        im + im_tol
+    )
+
     heatmap = alphatims.plotting.heatmap(
-    file[:, :, :, low_mz:high_mz],
+    file[rt_slice, im_slice, 0, mz_slice],
     x_axis_label="rt",
     y_axis_label="mobility",
     title=file.sample_name,
-    width=900
+    width=350
     )
 
     return heatmap    
