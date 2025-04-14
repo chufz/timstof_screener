@@ -6,6 +6,11 @@ We recommend using conda for a clean package environment. Install alphatims usin
 
 # Get a html with EICs and EIMs of a compound
 We provide some testdata in the ´test` folder. The IS.csv contains a list of suspect m/z values, retention times and mobility values (as reduced mobility values 1/K_0) which should be plotted.
+The header should contain the following lines:
+ - name
+ - mz
+ - rt
+ - im
 
 On the command line, run the following command:
 
